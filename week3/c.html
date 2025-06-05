@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Shiyu's Profile</title>
+  <link rel="stylesheet" href="/week3/style.css">
+</head>
+<body>
+    <header class="profile-header">
+    <h1>Shiyu's Profile</h1>
+  </header>
+  <mian class="container">
+     <!-- grid -->
+        <section class="about-me">
+            <h2>About Me</h2>
+                <table class="profile-table">
+                    <caption>Profile Information</caption>
+                    <thead>
+                        <tr>
+                            <th colspan="2">Basic Info</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                            <td>Name:</td>
+                            <td>Shiyu</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Photo:
+                            </td>
+                            <td>
+                                <img src="/img/profile.jpg" alt="Shiyu photo" class="profile-img">
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Birthday:</td>
+                            <td>Sep 7 1999</td>
+
+                        </tr>
+                            
+                        <tr>
+                            <td>
+                                Favorite Color:
+                            </td>
+                            <td>
+                                <span class="color-swatch" style="background:#3498db;" title="Blue"></span> Blue
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>Favorite Quote:</td>
+                            <td>"Stay curious."</td>
+                        </tr>
+
+                        <tr>
+                            <td>Favorite Food:</td>
+                            <td>Sushi</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>Favorite Movie:</td>
+                            <td>Inception</td>
+                        </tr>
+
+                        <tr>
+                            <td>Favorite Sport:</td>
+                            <td>Soccer</td>
+                        </tr>
+                     </tbody>
+
+                        
+                     <tfoot>
+                        <tr>
+                            <td colspan="2">Thanks for visiting my profile!</td>
+                        </tr>
+
+                     </tfoot>
+                     
+
+
+                </table>
+
+
+        </section>
+
+        <section class="media-gallery">
+            <h2>Gallery</h2>
+            <div class="media-flex">
+                <figure>
+                    <img src="/img/profile.jpg" alt="Shiyu photo" class="gallery-img">
+                    <figcaption>Shiyu</figcaption>
+                </figure>
+                <figure>
+                    <iframe width="400" height="500" src="https://www.youtube.com/watch?v=aZrgRmQgM9c" title="Video:" allowfullscreen></iframe>
+                    <figcaption>Favorite Song Video</figcaption>
+                </figure>
+                <figure>
+                    <audio controls>
+                        <source src="https://www.youtube.com/watch?v=aZrgRmQgM9c" type="audio/mpeg">
+                        <source src="https://www.youtube.com/watch?v=aZrgRmQgM9c" type="audio/aac">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <figcaption>Audio: Sample Music</figcaption>
+                </figure>
+            </div>
+        </section>
+
+
+
+
+    </mian>
+    <section class="feedback-section">
+         <h2>Leave Feedback</h2>
+         <form action="https://example.com" method="POST" class="feedback-form">
+            <fieldset>
+                <legend>Your Information</legend>
+                <label for="fname">Name:</label>
+                <input type="text" id="fname" name="fname" required>
+                <label for="email">email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="favcolor">Favorite Color:</label>
+                <input type="color" id="favcolor" name="favcolor" value="#3498db">
+            </fieldset>
+            <fieldset>
+                <legend>Rating</legend>
+                <div class="rating">
+                    <label><input type="radio" name="rating" value="1" required> 1</label>
+                    <label><input type="radio" name="rating" value="2"> 2</label>
+                    <label><input type="radio" name="rating" value="3"> 3</label>
+                    <label><input type="radio" name="rating" value="4"> 4</label>
+                    <label><input type="radio" name="rating" value="5"> 5</label>
+                </div>
+            </fieldset>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="3" required></textarea>
+            <div>
+                <input type="checkbox" id="mailing" name="mailing">
+                <label for="mailing">Join mailing list</label>
+
+            </div>
+            <button type="submit">Send Feedback</button>
+         </form>
+
+    </section>
+
+    <footer class="footer">
+        &copy; 2025 Shiyu
+    </footer>
+
+
+
+</body>
+</html>
