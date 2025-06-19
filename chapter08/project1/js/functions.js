@@ -12,7 +12,7 @@ function calculateTax(subtotal, taxRate) {
 }
 
 function calculateShipping(subtotal, threshold) {
-    return subtotal >= threshold ? 0 : 55;
+    return subtotal >= threshold ? 0 : 20;
 }
 
 function calculateGrandTotal(subtotal, tax, shipping) {
@@ -44,3 +44,6 @@ function generateTotalRow(label, value, isFocus = false) {
     `;
 }
         
+function formatCurrency(num) {
+    return '$' + Number(num).toFixed(2);
+}

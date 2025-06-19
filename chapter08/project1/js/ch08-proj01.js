@@ -5,8 +5,7 @@ const shipping_threshold = prompt('Enter shipping threshold (1000)');
 /* add loop and other code here ... in this simple exercise we are not
    going to concern ourselves with minimizing globals, etc */
 
-const cartBody = document.getElementById('cart-body');
-const cartFooter = document.getElementById('cart-footer');  
+const tbody = document.querySelector('.table-fill tbody');
 
 let cartHTML = '';
 cart.forEach(item => {
