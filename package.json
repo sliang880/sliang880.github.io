@@ -1,0 +1,9 @@
+{
+  "name": "assignment2-deployment",
+  "version": "1.0.0",
+  "description": "Node.js assignment deployment",
+  "main": "cis355/assignment/assignment2/index.js",
+  "scripts": {
+    "start": "node cis355/assignment/assignment2/index.js"
+  }
+}
