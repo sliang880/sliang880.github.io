@@ -21,6 +21,19 @@ const server = http.createServer((req, res) => {
             res.end(content);
         })
         
+    }else if(req.url.endsWith('.jpg')){
+        const fileName = req.url.replace("/", "");
+
+        fs.readFile(path.join(__dirname, fileName), (err, content) => {
+         if (err) {
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
+            res.end('File not found');
+            return;
+        }
+
+        res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+        res.end(content);
+    });
     }
 })
 
