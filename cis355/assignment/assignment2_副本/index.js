@@ -2,22 +2,7 @@ const http = require("http");
 const path = require("path");
 const fs = require("fs");
 
-
-const { MongoClient } = require("mongodb");
-
-const url = "mongodb+srv://shiyu1:liang123@cluster0.jv4yihg.mongodb.net/?appName=Cluster0";
-const client = new MongoClient(url);
-
-let collection;
-
-async function main() {
-    try {
-        await client.connect();
-        console.log("Mongodb successfully");
-
-        collection = client.db("bookdb").collection("bookcollection");
-
-const server = http.createServer(async(req, res) => {
+const server = http.createServer((req, res) => {
 
     if(req.url === '/'){
         fs.readFile(path.join(__dirname,  '1.html'),(err, content) => {
@@ -30,20 +15,11 @@ const server = http.createServer(async(req, res) => {
         
     }else if (req.url === '/api'){
 
-        try{
-            const data = await collection.find({}).toArray();
-            res.writeHead(200, { "Content-Type": "application/json" });
-            res.end(JSON.stringify(data));
-               
-        }catch(err){
-            res.writeHead(500, { "Content-Type": "application/json" });
-            res.end(JSON.stringify({ message: "Error fetching data from MongoDB" }));
-        }
-
-
-
-
-
+        fs.readFile(path.join(__dirname,  'data.json'),(err,content)=>{
+            if(err) throw err;
+            res.writeHead(200,{'Content-Type':'application/json'});
+            res.end(content);
+        })
         
     }else if(req.url.endsWith('.jpg')){
         const fileName = req.url.replace("/", "");
@@ -58,18 +34,12 @@ const server = http.createServer(async(req, res) => {
         res.writeHead(200, { 'Content-Type': 'image/jpeg' });
         res.end(content);
     });
-    }else {
-                res.writeHead(404, { "Content-Type": "text/plain" });
-                res.end("Page not found");
-            }
-});
+    }
+})
 
 const PORT= process.env.PORT || 5959;
 
 
 server.listen(PORT,()=> console.log(`Great our server is running on port ${PORT} `));
-}catch(e){
-    console.log(e);
 
- } }
- main();
+//https://sliang880-github-io-1.onrender.com
