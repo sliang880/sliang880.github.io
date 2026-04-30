@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Fitness Club Admin</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div>
+        <div class="navbar-title">Fitness Club Admin</div>
+        <div class="navbar-subtitle">Management Panel</div>
+      </div>
+    </div>
+    <div class="navbar-right">
+      <span class="welcome-text">Welcome, <strong id="userName">Admin</strong></span>
+      <button id="logoutBtn" class="btn-logout">Logout</button>
+    </div>
+  </nav>
+
+  <div class="main-container">
+
+    <div class="create-section">
+      <div class="section-header">
+        <h2 class="section-title">Add New Product / Service</h2>
+        <span id="createMsg" class="msg-success"></span>
+      </div>
+
+      <form id="createForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Name *</label>
+            <input type="text" id="name" placeholder="e.g., Premium Membership" required>
+          </div>
+
+          <div class="form-group">
+            <label>Category *</label>
+            <select id="category" required>
+              <option value="">Select Category</option>
+              <option value="Membership">Membership</option>
+              <option value="Personal Training">Personal Training</option>
+              <option value="Group Class">Group Class</option>
+              <option value="Wellness Service">Wellness Service</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Price ($) *</label>
+            <input type="number" id="price" placeholder="29.99" step="0.01" min="0" required>
+          </div>
+
+          <div class="form-group">
+            <label>Duration</label>
+            <input type="text" id="duration" placeholder="e.g., Monthly, 1 Hour">
+          </div>
+
+          <div class="form-group form-group-full">
+            <label>Description</label>
+            <textarea id="description" placeholder="Describe this product..." rows="2"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Status</label>
+            <select id="status">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn-create">Add Product</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="section-header">
+      <h2 class="section-title">All Products & Services</h2>
+    </div>
+
+    <div class="products-grid" id="productsGrid"></div>
+
+    <div id="editSection" class="edit-section">
+      <h2>Edit Product / Service</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Name *</label>
+          <input type="text" id="editName" required>
+        </div>
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="editCategory" required>
+            <option value="Membership">Membership</option>
+            <option value="Personal Training">Personal Training</option>
+            <option value="Group Class">Group Class</option>
+            <option value="Wellness Service">Wellness Service</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Price ($)</label>
+          <input type="number" id="editPrice" step="0.01" min="0" required>
+        </div>
+        <div class="form-group">
+          <label>Duration</label>
+          <input type="text" id="editDuration">
+        </div>
+        <div class="form-group form-group-full">
+          <label>Description</label>
+          <textarea id="editDescription" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="editStatus">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+      </div>
+      <input type="hidden" id="editId">
+      <p id="editMsg" class="msg-success"></p>
+      <div class="modal-actions">
+        <button id="cancelEditBtn" class="btn-cancel">Cancel</button>
+        <button id="saveEditBtn" class="btn-save">Save Changes</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/products.js"></script>
+</body>
+</html>
