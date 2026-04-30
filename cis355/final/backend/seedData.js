@@ -5,8 +5,14 @@ const bcrypt = require('bcryptjs')
 const User = require('./model/userModel')
 const Product = require('./model/productModel')
 
-const seedData = async () => {
+const autoSeed = async () => {
   try {
+    const existingUser = await User.findOne({ username: 'svsu' })
+    if (existingUser) {
+      console.log('Seed data already exists, skipping.')
+      return
+    }
+
     await User.deleteMany({})
     await Product.deleteMany({})
 
@@ -87,11 +93,13 @@ const seedData = async () => {
     console.log('  Username: svsu')
     console.log('  Password: cardinal')
 
-    mongoose.connection.close()
   } catch (error) {
     console.error('Seed Error:', error.message)
-    process.exit(1)
   }
 }
 
-seedData()
+if (require.main === module) {
+  autoSeed().then(() => process.exit(0))
+}
+
+module.exports = { autoSeed }
