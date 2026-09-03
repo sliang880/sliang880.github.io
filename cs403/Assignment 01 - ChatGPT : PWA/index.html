@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2457e6" />
+    <meta name="description" content="Your weather-aware daily schedule." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://api.open-meteo.com" />
+    <title>Weather Schedule</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">WEATHER-SCHEDULE</p>
+          <h1>My Schedule</h1>
+          <p id="date-label" class="date-label">Loading today…</p>
+          <p id="summary" class="summary">Finding your local forecast…</p>
+          <p id="location-label" class="location-label">Location: —</p>
+        </div>
+        <div class="header-actions">
+          <button id="today-button" class="button button-quiet">Today</button>
+          <button id="settings-button" class="icon-button" aria-label="Open settings">⚙</button>
+        </div>
+      </header>
+
+      <section class="schedule-card" aria-label="Daily schedule">
+        <div class="table-head" aria-hidden="true">
+          <span>Time</span><span>Weather</span><span>Calendar</span>
+        </div>
+        <div id="schedule" class="schedule" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <dialog id="settings-dialog" class="settings-dialog">
+      <form id="settings-form" method="dialog">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">CONNECTIONS</p>
+            <h2>Set up Weather Schedule</h2>
+          </div>
+          <button class="icon-button" value="cancel" aria-label="Close settings">×</button>
+        </div>
+        <label>
+          Location
+          <input id="location-input" name="location" placeholder="Ann Arbor, MI" autocomplete="address-level2" />
+          <small>Use a city, ZIP/postal code, or address.</small>
+        </label>
+        <label>
+          Google OAuth Client ID
+          <input id="google-client-id" name="clientId" placeholder="12345…apps.googleusercontent.com" />
+          <small>Create a Web application OAuth client in Google Cloud and add this app’s URL as an authorized JavaScript origin.</small>
+        </label>
+        <div class="dialog-actions">
+          <button id="save-settings" class="button" value="save">Save & refresh</button>
+          <button id="connect-calendar" type="button" class="button button-secondary">Connect Google Calendar</button>
+        </div>
+        <p id="settings-status" class="settings-status"></p>
+      </form>
+    </dialog>
+
+    <template id="loading-template">
+      <div class="empty-state"><span class="spinner"></span> Building your schedule…</div>
+    </template>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
